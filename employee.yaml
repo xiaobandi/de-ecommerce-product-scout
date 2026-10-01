@@ -1,0 +1,112 @@
+apiVersion: digital-employee/v1
+kind: DigitalEmployee
+metadata:
+  id: de_ecommerce_product_scout
+  name: 选品与竞品情报
+  alias: 选品分析师·小察
+  repo: de-ecommerce-product-scout
+  card_no: 6.4-⑥
+  group: ecommerce
+  group_label: 电商商家
+  phase: P1 二期（高价值种子用户入口，非走量款）
+  complexity: M
+  score: 高频3｜痛点4｜客单价4｜广度3｜价值5 ＝ **19/25**
+  price: 50-150 元/月
+  channels:
+  - GitHub
+  - Dify Marketplace（数据分析型 Workflow 高需品类）
+  license: Proprietary
+  version: 1.0.0
+spec:
+  positioning: 选品分析师·小察 ｜ 给结论不给仪表盘，把生意参谋/蝉妈妈翻译成决策
+  users: 有数据意识的腰部卖家（约占 20-30%，据R3调研）
+  boundary: 做：趋势采集、竞品监控、蓝海词挖掘、打分卡、简报；不做：代采购、承诺"必爆"
+  kpi: 周报采纳率 ≥60%；选中款 30 天动销率 ≥50%；竞品异动推送 ≤2 小时
+  roi_summary: 对标蝉妈妈专业版年费 1.2 万（据R5调研）；月省 12h≈¥360
+  demand_refs:
+  - D12
+  - D06
+  demand_support: 充分
+  demand_evidence: 中
+runtime:
+  system_prompt: persona/system-prompt.md
+  boundary: persona/boundary.md
+  kpi: persona/kpi.md
+deliverables:
+  skills:
+  - slug: competitor-digest
+    name: 竞品摘要
+    kind: private
+    path: skills/competitor-digest
+    version: 1.0.0
+    maturity: contract-complete
+  - slug: keyword-opportunity-score
+    name: 关键词机会评分
+    kind: private
+    path: skills/keyword-opportunity-score
+    version: 1.0.0
+    maturity: contract-complete
+  - slug: product-selection-scorecard
+    name: 选品打分卡
+    kind: private
+    path: skills/product-selection-scorecard
+    version: 1.0.0
+    maturity: contract-complete
+  - slug: profit-calculator
+    name: 利润测算
+    kind: private
+    path: skills/profit-calculator
+    version: 1.0.0
+    maturity: contract-complete
+  workflows:
+  - slug: wf-ecom-scout-category-trend
+    name: 类目热词与趋势采集
+    path: workflows/wf-ecom-scout-category-trend
+    version: 1.0.0
+    phase: P1
+    calls:
+    - data-ingest-adapter
+  - slug: wf-ecom-scout-price-monitor
+    name: 竞品上架/价格/销量监控
+    path: workflows/wf-ecom-scout-price-monitor
+    version: 1.0.0
+    phase: P1
+    calls:
+    - competitor-digest
+    - price-monitor
+  - slug: wf-ecom-scout-blueocean-keyword
+    name: 蓝海关键词挖掘
+    path: workflows/wf-ecom-scout-blueocean-keyword
+    version: 1.0.0
+    phase: P1
+    calls:
+    - keyword-opportunity-score
+  - slug: wf-ecom-scout-selection-scorecard
+    name: 选品打分卡
+    path: workflows/wf-ecom-scout-selection-scorecard
+    version: 1.0.0
+    phase: P1
+    calls:
+    - profit-calculator
+    - product-selection-scorecard
+  - slug: wf-ecom-scout-intel-brief
+    name: 周度机会简报
+    path: workflows/wf-ecom-scout-intel-brief
+    version: 1.0.0
+    phase: P1
+    calls:
+    - brief-generator
+  knowledge_base: kb/
+  connectors: connectors/bindings.yaml
+external_dependencies:
+- repo: agent-skills-core
+  version: 1.0.0
+  skills:
+  - brief-generator
+  - price-monitor
+  resolution: external
+spec_only_dependencies:
+- repo: agent-skills-core
+  spec: specs/data-ingest-adapter.md
+  skill: data-ingest-adapter
+  why: 报告明确"数据采集连接器族不公共化为 SKILL"——开源侧只发 Spec + Mock + 权限声明
