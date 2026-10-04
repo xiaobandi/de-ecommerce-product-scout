@@ -1,0 +1,15 @@
+{
+  "name": "profit-calculator",
+  "title": "利润测算",
+  "kind": "skill",
+  "owner": "de-ecommerce-product-scout",
+  "complexity": "S",
+  "phase": "P1",
+  "one_liner": "成本/售价/费率→净利模型（候选品参数→利润表）",
+  "pages": [
+    "docs/使用手册.html",
+    "docs/使用示例.html",
+    "docs/用户场景.html",
+    "docs/架构与流程图.html"
+  ]
+}
