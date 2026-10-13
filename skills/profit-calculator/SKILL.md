@@ -3,7 +3,7 @@ name: profit-calculator
 description: >-
   利润测算：成本/售价/费率→净利模型。当任务涉及候选品参数的处理、且目标产出是利润表时使用——
   即使没有直接说出「利润测算」这个词，只要意图吻合也应触发。
-license: Proprietary
+license: Apache-2.0
 compatibility: >-
   需要能读取工作区文件；若环境支持执行代码，将额外启用 scripts/ 下的确定性脚本路径。
   跨 WorkBuddy / ChatGPT / DeepSeek Harness / Kimi Work / 豆包工作。

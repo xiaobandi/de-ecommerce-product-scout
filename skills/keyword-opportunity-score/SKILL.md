@@ -3,7 +3,7 @@ name: keyword-opportunity-score
 description: >-
   关键词机会评分：搜索量×竞争度→机会分。当任务涉及关键词的处理、且目标产出是评分时使用——
   即使没有直接说出「关键词机会评分」这个词，只要意图吻合也应触发。
-license: Proprietary
+license: Apache-2.0
 compatibility: >-
   需要能读取工作区文件；若环境支持执行代码，将额外启用 scripts/ 下的确定性脚本路径。
   跨 WorkBuddy / ChatGPT / DeepSeek Harness / Kimi Work / 豆包工作。

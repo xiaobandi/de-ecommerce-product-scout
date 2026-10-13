@@ -15,7 +15,7 @@ metadata:
   channels:
   - GitHub
   - Dify Marketplace（数据分析型 Workflow 高需品类）
-  license: Proprietary
+  license: Apache-2.0
   version: 1.0.0
 spec:
   positioning: 选品分析师·小察 ｜ 给结论不给仪表盘，把生意参谋/蝉妈妈翻译成决策
